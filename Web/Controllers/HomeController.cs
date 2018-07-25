@@ -4,6 +4,7 @@ using Core.Abstract;
 
 namespace Web.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly IDataService _dataService;

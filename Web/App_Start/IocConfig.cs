@@ -12,6 +12,7 @@ namespace Web
         {
             NinjectModule registerModule = new ServiceModule();
             var kernel = new StandardKernel(registerModule);
+            kernel.Unbind<ModelValidatorProvider>();
             DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
         }
     }

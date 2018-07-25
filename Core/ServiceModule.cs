@@ -12,6 +12,7 @@ namespace Core
         {
             //Services
             Bind<IDataService>().To<DataService>();
+            Bind<IAuthService>().To<AuthService>();
 
             //Automapper
             var mapperConfiguration = MapperConfig.CreateConfiguration();
