@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+@model IEnumerable<Core.Models.WorkerViewModel>
+
+@section Scripts
+{
+    @Styles.Render("//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css");
+    @Scripts.Render("//code.jquery.com/jquery-3.3.1.min.js");
+    @Scripts.Render("//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js");
+
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                "ajax": {
+                    "type": "GET",
+                    "url": 'Home/ApiGetWorkers',
+                    "dataSrc": ''
+                },
+                "columns": [
+                    { "data": "Id" },
+                    { "data": "Name" },
+                    { "data": "Salary" }
+                ]
+            });
+        });
+    </script>
+}
+
+<h2>Index</h2>
+
+<table id="example" style="width:100%">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Salary</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Salary</th>
+        </tr>
+    </tfoot>
+</table>
+
+<hr>
