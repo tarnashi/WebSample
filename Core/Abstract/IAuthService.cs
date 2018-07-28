@@ -6,5 +6,6 @@ namespace Core.Abstract
     public interface IAuthService
     {
         bool CheckLogin(string login, string password);
+        bool CheckUserRole(string login, string role);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Xsl;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Core.Abstract;
@@ -21,5 +22,17 @@ namespace Core.Services
         {
             return _ctx.Workers.SingleOrDefault(w => w.Login == login && w.Password == password) != null;
         }
+
+        public bool CheckUserRole(string login, string role)
+        {
+            var worker = _ctx.Workers.FirstOrDefault(w => w.Login == login);
+            if (worker != null)
+            {
+                return worker.AccessGroups.Any(a => a.Name == role);
+            }
+
+            return false;
+        }
+
     }
 }
